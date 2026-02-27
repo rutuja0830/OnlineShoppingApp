@@ -1,0 +1,34 @@
+﻿@model OnlineShoppingApp.Models.SummaryViewModel
+
+<h2>Purchase Summary</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Remove</th>
+    </tr>
+
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Quantity</td>
+            <td>@item.TotalPrice</td>
+            <td>
+                <a asp-action="Remove"
+                   asp-route-id="@item.ProductId"
+                   class="btn btn-danger">
+                    Remove
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+
+<hr />
+
+<h4>Subtotal: @Model.SubTotal</h4>
+<h4>Discount: @Model.Discount</h4>
+<h3>Total: @Model.Total</h3>
